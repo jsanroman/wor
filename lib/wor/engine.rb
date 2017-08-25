@@ -16,12 +16,11 @@ module Wor
                           access_token: Wor.disqus_access_token}
     end
 
-    initializer :assets do |config|
-      Rails.application.config.assets.precompile += ["wor/admin/admin.css", "wor/admin/admin.js"]
-      Rails.application.config.assets.precompile += ["wor/elfinder.css", "wor/elfinder.js"]
-      Rails.application.config.assets.precompile += ["tinymce/skins/lightgray/content.min.css"]
-
-      Rails.application.config.assets.paths << root.join("app", "assets", "images")
+    initializer :assets do |app|
+      app.config.assets.precompile += ["wor/admin/admin.css", "wor/admin/admin.js"]
+      app.config.assets.precompile += ["wor/elfinder.css", "wor/elfinder.js"]
+      app.config.assets.precompile += ["tinymce/skins/lightgray/content.min.css"]
+      app.config.assets.precompile += ["wor/*.png", "wor/*.giff"]
     end
   end
 
