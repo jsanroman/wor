@@ -14,7 +14,7 @@ xml.rss :version => "2.0",
     xml.link "#{request.protocol}#{request.host}#{post_path(@post)}"
     xml.atom :link, href: "#{request.protocol}#{request.host}#{post_path(@post)}", rel: "self", type: "application/rss+xml"
 
-    xml.lastBuildDate @post.date.to_s(:rfc822)
+    xml.lastBuildDate @post.date.strftime('%a, %d %b %Y %H:%M:%S %z')
     xml.language "es-ES"
     xml.description do
       xml.cdata!(convert_to_absolute_paths(intro_text(@post)))
@@ -22,7 +22,7 @@ xml.rss :version => "2.0",
 
     xml.item do
       xml.title @post.title
-      xml.pubDate @post.date.to_s(:rfc822)
+      xml.pubDate @post.date.strftime('%a, %d %b %Y %H:%M:%S %z')
       xml.link "#{request.protocol}#{request.host}#{post_path(@post)}"
       xml.guid "#{request.protocol}#{request.host}#{post_path(@post)}"
 
